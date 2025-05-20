@@ -1,0 +1,34 @@
+{% extends 'client_base.html' %}
+{% block client_body %}
+    <p class="text-danger">{{ error }}</p>
+    <div class="row">
+        <div class="d-flex flex-column align-items-stretch col-4" style="height: 84vh">
+            <span class="fs-5 ms-3 fw-semibold">Заявки</span>
+            <div class="list-group list-group-flush overflow-y-scroll">
+                {% for work_plan in work_plans %}
+
+                    <a href="{% url 'client:work_plan_detail' work_plan.id %}" class="list-group-item list-group-item-action py-3" aria-current="true">
+                        <div class="d-flex w-100 align-items-center justify-content-between">
+                            <strong class="mb-1">[{{ work_plan.id }}] {{ work_plan.application.equipment_name }} {{ work_plan.application.location_in_room }}</strong>
+                            <div>
+                                <small class="row">{{ work_plan.application.created_at|slice:"0:10" }}</small>
+                                <small class="row">{{ work_plan.application.created_at|slice:"11:19" }}</small>
+                            </div>
+                        </div>
+                        <div class="col-10 mb-1 small">
+                            <p>ул. {{ work_plan.application.address.street }}, д.{{ work_plan.application.address.house_number }}<br>
+                            Приоритет: {{ work_plan.application.priority.name }}<br>
+                                Отправитель: {{ work_plan.application.lastname }} {{ work_plan.application.firstname }} {{ work_plan.application.patronymic }}</p>
+                            <p class="fst-italic">Статус: {{ work_plan.status.name }}</p>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+                <a href="{% url 'client:create_application' %}" class="btn btn-outline-primary mt-2">Создать заявку</a>
+        </div>
+        <div class="col-8 mt-4">
+            {% block work_plan %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

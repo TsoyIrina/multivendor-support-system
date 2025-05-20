@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Мультивендорная техподдержка</title>
+    <meta charset="utf-8"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="d-flex justify-content-center">
+    <p class="d-inline-flex gap-1">
+        <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button"
+           aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2"
+                aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element
+        </button>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse"
+                aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements
+        </button>
+    </p>
+    <div class="row">
+        <div class="col">
+            <div class="collapse multi-collapse" id="multiCollapseExample1">
+                <div class="card card-body">
+                    <div class="w-75">
+                        <h1 class="mb-4">Заявка</h1>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="width: 30%" id="basic-addon1">Компания</span>
+                            <input type="text" class="form-control" aria-label="Username"
+                                   aria-describedby="basic-addon1" value="{{ company }}">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="width: 30%" id="basic-addon1">Адрес</span>
+                            <input type="text" class="form-control" aria-label="Username"
+                                   aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="width: 30%" id="basic-addon1">Приоритет</span>
+                            <input type="text" class="form-control" aria-label="Username"
+                                   aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="width: 30%" id="basic-addon1">Фамилия</span>
+                            <input type="text" class="form-control" aria-label="Username"
+                                   aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="width: 30%" id="basic-addon1">Имя</span>
+                            <input type="text" class="form-control" aria-label="Username"
+                                   aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="width: 30%" id="basic-addon1">Отчество</span>
+                            <input type="text" class="form-control" aria-label="Username"
+                                   aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="width: 30%" id="basic-addon1">Email</span>
+                            <input type="text" class="form-control" aria-label="Username"
+                                   aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="width: 30%" id="basic-addon1">Телефон</span>
+                            <input type="text" class="form-control" aria-label="Username"
+                                   aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="width: 30%" id="basic-addon1">Серийный номер</span>
+                            <input type="text" class="form-control" aria-label="Username"
+                                   aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="width: 30%"
+                                  id="basic-addon1">IP Management Interface</span>
+                            <input type="text" class="form-control" aria-label="Username"
+                                   aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="width: 30%" id="basic-addon1">Наименование оборудования</span>
+                            <input type="text" class="form-control" aria-label="Username"
+                                   aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="width: 30%" id="basic-addon1">Расположение оборудования</span>
+                            <input type="text" class="form-control" aria-label="Username"
+                                   aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="width: 30%"
+                                  id="basic-addon1">Ограничение функционала</span>
+                            <input type="text" class="form-control" aria-label="Username"
+                                   aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="width: 30%" id="basic-addon1">Логические ошибки</span>
+                            <input type="text" class="form-control" aria-label="Username"
+                                   aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="width: 30%" id="basic-addon1">Описание</span>
+                            <input type="text" class="form-control" aria-label="Username"
+                                   aria-describedby="basic-addon1">
+                        </div>
+                        <input class="btn btn-light w-100 mb-3" type="button" value="Отправить">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="collapse multi-collapse" id="multiCollapseExample2">
+                <div class="card card-body">
+                    Some placeholder content for the second collapse component of this multi-collapse example. This
+                    panel is hidden by default but revealed when the user activates the relevant trigger.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

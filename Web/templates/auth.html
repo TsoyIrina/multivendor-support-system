@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="d-flex position-relative align-items-center py-4 bg-body-tertiary" style="height: 100vh">
+        <div class="form-signin w-100 m-auto">
+                <p class="h3 fw-normal text-center fs-1">Мультивендорная поддержка</p>
+            <form method="post" class="w-25 m-auto mt-5">
+                {% csrf_token %}
+                <h1 class="h3 fw-normal text-center">Вход</h1>
+                <p class="text-danger text-center mt-3">{{ error }}</p>
+                <div class="form-floating ">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="example">
+                    <label for="username">Логин</label>
+                </div>
+                <div class="form-floating mt-2">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="password">
+                    <label for="password">Пароль</label>
+                </div>
+
+                <input class="btn btn-primary w-100 py-2 mt-3" type="submit" value="Войти">
+                <p class="mt-1 text-body-secondary text-center">© 2024</p>
+            </form>
+        </div>
+    </div>
+{% endblock %}

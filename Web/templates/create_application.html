@@ -1,0 +1,81 @@
+{% extends 'client_base.html' %}
+{% block client_body %}
+    <div class=" d-flex justify-content-center w-100">
+        <div class="w-75">
+            <form method="post">
+            {% csrf_token %}
+                <h1 class="mb-4">Форма создания заявки</h1>
+                <div class="row">
+                    <div class="input-group mb-3 col">
+                        <span class="input-group-text">Адрес</span>
+                        <select class="form-control" name="address">
+                            {% for address in addresses %}
+                                <option value="{{ address.id }}">ул. {{ address.street }}
+                                    д.{{ address.house_number }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="input-group mb-3 col">
+                        <span class="input-group-text">Расположение в зале</span>
+                        <input type="text" class="form-control" name="location_in_room" aria-label="Username"
+                               aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-group mb-3 col">
+                        <span class="input-group-text">Приоритет</span>
+                        <select id="phone" class="form-control" name="priority">
+                            {% for p in priority %}
+                                <option value="{{ p.id }}">{{ p.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="input-group mb-3 col">
+                        <div class="input-group-text">
+                            <input class="form-check-input" name="equipment_non_operational" type="checkbox">
+                        </div>
+                        <input type="text" class="form-control" readonly value="Оборудование полностью неработоспособно">
+                    </div>
+                </div>
+                <hr>
+                <div class="input-group mt-2 mb-3">
+                    <span class="input-group-text">Ответственный</span>
+                    <input type="text" name="lastname" placeholder="Фамилия" class="form-control">
+                    <input type="text" name="firstname" placeholder="Имя" class="form-control">
+                    <input type="text" name="patronymic" placeholder="Отчество" class="form-control">
+                </div>
+                <div class="input-group mb-4">
+                    <span class="input-group-text" id="basic-addon1">Email</span>
+                    <input type="text" class="form-control" name="email" placeholder="example@example.com">
+                    <span class="input-group-text" id="basic-addon1">Телефон</span>
+                    <input type="text" class="form-control" name="phone" placeholder="81234567890">
+                </div>
+                <hr>
+                <div class="input-group mb-3 mt-2">
+                    <span class="input-group-text">Наименование оборудования</span>
+                    <input type="text" class="form-control" name="equipment_name" placeholder="Оборудование">
+                    <span class="input-group-text">Серийный номер</span>
+                    <input type="text" class="form-control" name="serial_number" placeholder="Example123">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">IP Management Interface</span>
+                    <input type="text" class="form-control" name="ip_management_interface">
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Неисправность ограничивает полный функционал оборудования</span>
+                    <input type="text" class="form-control" name="functionality_limited">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Подозрение на логические ошибки</span>
+                    <input type="text" class="form-control" name="suspicion_of_logical_errors">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Описание неисправности</span>
+                    <textarea type="text" class="form-control" name="fault_description"></textarea>
+                </div>
+                <input class="btn btn-primary w-100 mb-3" type="submit" value="Отправить">
+            </form>
+        </div>
+    </div>
+{% endblock %}

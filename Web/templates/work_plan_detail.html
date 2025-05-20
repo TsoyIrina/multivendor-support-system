@@ -1,0 +1,215 @@
+{% extends 'application.html' %}
+{% block work_plan %}
+    <div class="row">
+        <div class="input-group col">
+            <span class="input-group-text" id="priority">Приоритет</span>
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                   aria-describedby="priority" readonly value="{{ work_plan.application.priority.name }}">
+        </div>
+        <div class="input-group col">
+            <span class="input-group-text" id="priority">Дата создания</span>
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                   aria-describedby="priority" readonly value="{{ work_plan.application.created_at|slice:"0:19" }}">
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="input-group col">
+            <span class="input-group-text" id="priority">Адрес</span>
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                   aria-describedby="priority" readonly
+                   value="{{ work_plan.application.address.street }} {{ work_plan.application.address.house_number }}">
+        </div>
+        <div class="input-group col">
+            <span class="input-group-text" id="priority">Расположение</span>
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                   aria-describedby="priority" readonly value="{{ work_plan.application.location_in_room }}">
+        </div>
+    </div>
+
+    <div class="accordion mt-3" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#sender"
+                        aria-expanded="true" aria-controls="sender">
+                    <div class="input-group">
+                        Отправитель: {{ work_plan.application.lastname }} {{ work_plan.application.firstname }} {{ work_plan.application.patronymic }}
+
+                    </div>
+                </button>
+            </h2>
+            <div id="sender" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="input-group">
+                        <span class="input-group-text">Телефон и почта</span>
+                        <input type="text" aria-label="phone" readonly value="{{ work_plan.application.phone }}"
+                               class="form-control">
+                        <input type="text" aria-label="email" readonly value="{{ work_plan.application.email }}"
+                               class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="accordion mt-3" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#object"
+                        aria-expanded="true" aria-controls="object">
+                    <div class="input-group">
+                        Оборудование: {{ work_plan.application.equipment_name }}
+
+                    </div>
+                </button>
+            </h2>
+            <div id="object" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="row">
+                        <div class="input-group col">
+                            <span class="input-group-text">Серийный номер</span>
+                            <input type="text" aria-label="phone" readonly
+                                   value="{{ work_plan.application.serial_number }}"
+                                   class="form-control">
+                        </div>
+                        <div class="input-group col">
+                            <span class="input-group-text">IPMI</span>
+                            <input type="text" aria-label="phone" readonly
+                                   value="{{ work_plan.application.ip_management_interface }}"
+                                   class="form-control">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="input-group mt-3">
+                            <div class="input-group-text">
+
+                                <input class="form-check-input mt-0" readonly type="checkbox" value="ewfdc"
+                                        {% if work_plan.application.equipment_non_operational == True %}
+                                       checked
+                                        {% endif %}
+                                       aria-label="Checkbox for following text input">
+                            </div>
+                            <input type="text" class="form-control" readonly aria-label=""
+                                   value="Оборудование полностью неработоспособно">
+                        </div>
+                    </div>
+                    <div class="input-group mt-3">
+                        <span class="input-group-text">Неисправность ограничивает полный функционал оборудования </span>
+                        <input type="text" aria-label="phone" readonly
+                               value="{{ work_plan.application.functionality_limited }}"
+                               class="form-control">
+                    </div>
+                    <div class="input-group mt-3">
+                        <span class="input-group-text">Подозрение на логические ошибки</span>
+                        <input type="text" aria-label="phone" readonly
+                               value="{{ work_plan.application.suspicion_of_logical_errors }}"
+                               class="form-control">
+                    </div>
+                    <div class="input-group mt-3">
+                        <span class="input-group-text">Описание неисправности</span>
+                        <textarea type="text" aria-label="phone" readonly
+                                  class="form-control">{{ work_plan.application.fault_description }}</textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion mt-3" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#employee"
+                        aria-expanded="true" aria-controls="employee">
+                    <div class="input-group">
+                        Статус: {{ work_plan.status.name }}
+                    </div>
+                </button>
+            </h2>
+            <div id="employee" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="input-group">
+                        <span class="input-group-text">Ответственный</span>
+                        <input type="text" aria-label="phone" readonly
+                               value="{{ work_plan.responsible.user.last_name }}"
+                               class="form-control">
+                        <input type="text" aria-label="email" readonly
+                               value="{{ work_plan.responsible.user.first_name }}"
+                               class="form-control">
+                        <input type="text" aria-label="email" readonly value="{{ work_plan.responsible.patronymic }}"
+                               class="form-control">
+                    </div>
+                    <div class="input-group mt-3">
+                        <span class="input-group-text">Даты начала и конца</span>
+                        <input type="text" aria-label="phone" readonly value="{{ work_plan.start_date }}"
+                               class="form-control">
+                        <input type="text" aria-label="email" readonly value="{{ work_plan.end_date }}"
+                               class="form-control">
+                    </div>
+                    <div class="input-group mt-3">
+                        <span class="input-group-text">Задачи</span>
+                        <textarea type="text" aria-label="phone" readonly
+                                  class="form-control">{{ work_plan.tasks }}</textarea>
+                    </div>
+                    <div class="input-group mt-3">
+                        <span class="input-group-text">Заметки</span>
+                        <textarea type="text" aria-label="phone" readonly
+                                  class="form-control">{{ work_plan.notes }}</textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="mt-3">
+        <div class="row">
+            <div class="input-group col">
+                <div class="input-group-text">
+                    <input class="form-check-input mt-0" readonly type="checkbox" value="ewfdc"
+                            {% if work_plan.is_agreed == True %}
+                           checked
+                            {% endif %}
+                           aria-label="Checkbox for following text input">
+                </div>
+                <input type="text" class="form-control" readonly aria-label=""
+                       value="Согласовано">
+            </div>
+            {% if work_plan.is_agreed == False %}
+                <div class="col">
+                    <a href="{% url 'client:agreed' work_plan.id %}"
+                       class="btn btn-outline-primary  w-100">Согласовать</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="mb-5 w-100">
+        <div class="border border-black rounded mt-5 overflow-y-scroll w-100" style="height: 250px">
+            {% for message in work_plan.chat_with_client.message %}
+                <div class="card m-1 {% if message.sender.username == username %}
+                    float-end
+                {% endif %}" style="width: 30rem;">
+                    <div class="card-body">
+                        <h6 class="card-title">{% if message.sender.username == username %}
+                            {{ message.sender.username }}
+                        {% else %}
+                            {{ message.sender.last_name }} {{ message.sender.first_name }}{% endif %}</h6>
+                        <p class="card-subtitle mb-2 text-body-secondary">{{ message.timestamp|slice:"0:10" }} {{ message.timestamp|slice:"11:19" }}</p>
+                        <p class="card-text">{{ message.content }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-group mt-3 mb-3 w-100">
+                <input type="text" class="form-control" name="content" placeholder="Сообщение"
+                       aria-label="Recipient's username"
+                       aria-describedby="button">
+                <button class="btn btn-outline-primary" type="submit" id="button">Отправить</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

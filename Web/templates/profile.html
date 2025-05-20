@@ -1,0 +1,69 @@
+{% extends 'client_base.html' %}
+{% block client_body %}
+
+    <p class="text-danger">{{ error }}</p>
+    <div>
+        <h2 class="mb-4">Информация о компании «{{ name }}»</h2>
+        <div class="row g-5">
+            <div class="col-md-4 col-lg-6 order-md-last">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-primary">Филиалы</span>
+                    <span class="badge bg-primary rounded-pill">{{ addresses|length }}</span>
+                </h4>
+                <ul class="list-group mb-3">
+
+                    {% for address in addresses %}
+                        <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <div class="col-3">
+                                <small class="text-body-secondary">Улица</small>
+                                <h6 class="my-0">{{ address.street }}</h6>
+                            </div>
+                            <div class="col-3">
+                                <small class="text-body-secondary">Дом</small>
+                                <h6 class="my-0">{{ address.house_number }}</h6>
+                            </div>
+                            <div>
+                                <a href="{% url 'client:delete_address' address.id %}" class="btn btn-outline-danger">Удалить</a>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <form class="card p-2" method="post">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <span class="input-group-text">Улица и дом</span>
+                        <input type="text" aria-label="street" name="street" placeholder="Уличная" class="form-control w-25">
+                        <input type="text" aria-label="house number" name="house_number" placeholder="10/1" class="form-control">
+                        <button type="submit" class="btn btn-outline-primary">Добавить</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-8 col-lg-6 pt-5">
+                <div class="row g-3">
+                    <div class="col-5">
+                        <label for="firstName" class="form-label">Логин</label>
+                        <input type="text" class="form-control" readonly id="firstName" value="{{ username }}">
+
+                    </div>
+                    <div class="col-5">
+                        <label for="lastName" class="form-label">Дата добавления</label>
+                        <input type="text" class="form-control" readonly id="lastName" value="{{ date_joined }}">
+                    </div>
+                    <div class="col-12">
+                        <label for="username" class="form-label">Название</label>
+                        <div class="input-group has-validation">
+                            <input type="text" class="form-control" readonly id="username" value="{{ name }}"
+                                   required="">
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <a class="w-100 btn btn-outline-primary btn-lg" href="{% url 'client:update_profile' %}">Изменить</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

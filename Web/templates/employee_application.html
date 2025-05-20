@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <a href="/"
+               class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <span class="fs-4">Мультивендорная поддержка</span>
+            </a>
+
+            <ul class="nav nav-pills align-items-center">
+                <li class="nav-item ms-5 ">{{ username }}</li>
+            </ul>
+        </header>
+    </div>
+    <div class="m-5 mt-2 mb-0">
+        <p class="text-danger">{{ error }}</p>
+        <div class="row ">
+            <div class="d-flex flex-column align-items-stretch col-4" style="height: 84vh">
+                <span class="fs-4 ms-3 fw-semibold">Заявки</span>
+                <div class="fs-5 ms-3">
+                    <div class="input-group mt-3 mb-2">
+                        <form method="post">
+                            {% csrf_token %}<div class="input-group">
+                                <span class="input-group-text">Фильтр по дате</span>
+                                <input type="date" class="form-control" id="inputGroupFile04" name="date">
+                                <button class="btn btn-outline-primary" type="submit" id="inputGroupFileAddon04">
+                                    Применить
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="list-group list-group-flush overflow-y-scroll">
+                    {% for work_plan in work_plans %}
+                        <a href="{% url 'employee:work_plan_detail' work_plan.id %}"
+                           class="list-group-item list-group-item-action py-3" aria-current="true">
+                            <div class="d-flex w-100 align-items-center justify-content-between">
+                                <strong class="mb-1">[{{ work_plan.id }}] {{ work_plan.application.company.name }}</strong>
+                                <div>
+                                    <small class="row">{{ work_plan.start_date }}</small>
+                                    <small class="row">{{ work_plan.end_date }}</small>
+                                </div>
+                            </div>
+                            <div class="col-10 mb-1 small">
+                                <p>{{ work_plan.application.equipment_name }} {{ work_plan.application.serial_number }}</p>
+                                <p>ул. {{ work_plan.application.address.street }},
+                                    д.{{ work_plan.application.address.house_number }}<br>
+                                    Приоритет: {{ work_plan.application.priority.name }}<br>
+                                    Ответственный: {{ work_plan.responsible.user.last_name }} {{ work_plan.responsible.user.first_name }} {{ work_plan.responsible.patronymic }}
+                                </p>
+                                <p class="fst-italic">Статус: {{ work_plan.status.name }}</p>
+                            </div>
+                        </a>
+                    {% endfor %}
+
+                </div>
+            </div>
+            <div class="col-8 mt-4">
+                {% block work_plan %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

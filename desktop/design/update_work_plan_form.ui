@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>updateWorkPlanForm</class>
+ <widget class="QWidget" name="updateWorkPlanForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>351</width>
+    <height>453</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Мультивендорная поддержка</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="label_9">
+     <property name="styleSheet">
+      <string notr="true">font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Изменение плана работ</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="errorLbl">
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="widget" native="true">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="1" column="2" colspan="3">
+       <widget class="QGroupBox" name="groupBox_15">
+        <property name="title">
+         <string>Инженер </string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_21">
+         <item row="3" column="1">
+          <widget class="QComboBox" name="employeeEngineerBox"/>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLabel" name="label_55">
+           <property name="styleSheet">
+            <string notr="true">color: rgb(153, 153, 153);</string>
+           </property>
+           <property name="text">
+            <string>Сотрудник</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="label_52">
+           <property name="styleSheet">
+            <string notr="true">color: rgb(153, 153, 153);</string>
+           </property>
+           <property name="text">
+            <string>Должность</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QComboBox" name="workStatusEngineerBox"/>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="2">
+       <widget class="QGroupBox" name="groupBox_14">
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="title">
+         <string>Ответственный</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_20">
+         <item row="1" column="1">
+          <widget class="QComboBox" name="workStatusResponsibleBox"/>
+         </item>
+         <item row="3" column="1">
+          <widget class="QComboBox" name="employeeResponsibleBox"/>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="label_49">
+           <property name="styleSheet">
+            <string notr="true">color: rgb(153, 153, 153);</string>
+           </property>
+           <property name="text">
+            <string>Должность</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLabel" name="label_50">
+           <property name="styleSheet">
+            <string notr="true">color: rgb(153, 153, 153);</string>
+           </property>
+           <property name="text">
+            <string>Сотрудник</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="2" column="3">
+       <widget class="QLabel" name="label_48">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(153, 153, 153);</string>
+        </property>
+        <property name="text">
+         <string>Дата начала</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="4">
+       <widget class="QLabel" name="label_57">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(153, 153, 153);</string>
+        </property>
+        <property name="text">
+         <string>Дата конца</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="3">
+       <widget class="QDateEdit" name="startDateEdit">
+        <property name="readOnly">
+         <bool>false</bool>
+        </property>
+        <property name="calendarPopup">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="0" colspan="5">
+       <widget class="QPushButton" name="updateWorkPlanBtn">
+        <property name="text">
+         <string>Сохранить</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="4">
+       <widget class="QDateEdit" name="endDateEdit">
+        <property name="readOnly">
+         <bool>false</bool>
+        </property>
+        <property name="calendarPopup">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0" colspan="5">
+       <widget class="QTextEdit" name="notesTextEdit">
+        <property name="readOnly">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0" colspan="2">
+       <widget class="QLabel" name="label_2">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(153, 153, 153);</string>
+        </property>
+        <property name="text">
+         <string>Примечания</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0" colspan="5">
+       <widget class="QTextEdit" name="tasksTextEdit">
+        <property name="readOnly">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0" colspan="2">
+       <widget class="QLabel" name="label">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(153, 153, 153);</string>
+        </property>
+        <property name="text">
+         <string>Задачи</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0" colspan="5">
+       <widget class="QGroupBox" name="groupBox">
+        <property name="title">
+         <string>ЗИП</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_3">
+           <property name="styleSheet">
+            <string notr="true">color: rgb(153, 153, 153);</string>
+           </property>
+           <property name="text">
+            <string>ЗИП</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0" colspan="3">
+          <widget class="QComboBox" name="zipComboBox"/>
+         </item>
+         <item row="2" column="2">
+          <widget class="QLabel" name="label_8">
+           <property name="styleSheet">
+            <string notr="true">color: rgb(153, 153, 153);</string>
+           </property>
+           <property name="text">
+            <string>Ед. измерения</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_7">
+           <property name="styleSheet">
+            <string notr="true">color: rgb(153, 153, 153);</string>
+           </property>
+           <property name="text">
+            <string>Кол-во</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="2">
+          <widget class="QLineEdit" name="unitZipEdit">
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0" colspan="2">
+          <widget class="QLineEdit" name="quantityZipEdit"/>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="4" column="0" colspan="2">
+       <widget class="QComboBox" name="statusBox"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_47">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(153, 153, 153);</string>
+        </property>
+        <property name="text">
+         <string>Статус</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

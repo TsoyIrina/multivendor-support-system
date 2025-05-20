@@ -1,0 +1,40 @@
+{% extends 'client_base.html' %}
+{% block client_body %}
+
+    <p class="text-danger">{{ error }}</p>
+    <div style="height: 60vh" class="d-flex">
+        <div class="m-auto">
+            <h2>Изменение данных компании «{{ name }}»</h2>
+            <div class="w-75 m-auto mt-5">
+                <div class="row g-3">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label for="username" class="form-label">Логин</label>
+                                <input type="text" class="form-control" id="username" name="username" value="{{ username }}">
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="lastName" class="form-label">Дата добавления</label>
+                                <input type="text" class="form-control" readonly id="lastName"
+                                       value="{{ date_joined }}">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <label for="name" class="form-label">Название</label>
+                            <div class="input-group has-validation">
+                                <input type="text" class="form-control" id="name" name="name" value="{{ name }}"
+                                       required="">
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <button class="w-100 btn btn-outline-primary btn-lg" type="submit">Изменить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
